@@ -1,0 +1,35 @@
+{
+  "singleQuote": true,
+  "semi": true,
+  "trailingComma": "all",
+  "arrowParens": "always",
+  "printWidth": 100,
+  "tabWidth": 2,
+  "bracketSpacing": true,
+  "overrides": [
+    {
+      "files": ["**/*.css", "**/*.scss", "**/*.html"],
+      "options": {
+        "singleQuote": false
+      }
+    }
+  ],
+  "plugins": ["prettier-plugin-organize-attributes"],
+  "attributeGroups": [
+    "^\\*",
+    "^\\w+(?<!data|aria|http|let)-",
+    "^#",
+    "^class$",
+    "^(id|\\[id\\])$",
+    "^\\[class\\.",
+    "^let-",
+    "$DEFAULT",
+    "^\\[[^\\(@]",
+    "^\\[\\(",
+    "^\\(",
+    "^@",
+    "^\\[@"
+  ],
+  "attributeSort": "ASC",
+  "singleAttributePerLine": true
+}
