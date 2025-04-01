@@ -1,5 +1,5 @@
 {
-  "name": "angular-app-sample",
+  "name": "potolki-sokol-admin",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -10,8 +10,7 @@
     "prepare": "husky && husky install",
     "lint": "ng lint; stylelint \"**/*.{css,scss}\"",
     "lint:fix": "ng lint --fix; stylelint --fix \"**/*.{css,scss}\"",
-    "format": "prettier --write .",
-    "init": "node tools/init-project.js"
+    "format": "prettier --write ."
   },
   "private": true,
   "dependencies": {
