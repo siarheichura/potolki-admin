@@ -1,0 +1,20 @@
+.images {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+nb-list-item,
+nb-accordion-item-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nb-layout-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

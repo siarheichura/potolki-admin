@@ -1,1 +1,113 @@
-<h1>App</h1>
+<nb-layout>
+  <nb-layout-header>
+    <h4>Potolki Sokol Adminka</h4>
+  </nb-layout-header>
+
+  <nb-layout-column>
+    <nb-accordion>
+      <nb-accordion-item>
+        <nb-accordion-item-header>
+          <span> Примеры работ </span>
+
+          <nb-actions size="small">
+            <nb-action
+              icon="file-add-outline"
+              (click)="handleWorksUploadFileClick($event)"
+            />
+          </nb-actions>
+        </nb-accordion-item-header>
+        <nb-accordion-item-body>
+          <nb-list>
+            @for (file of worksFiles(); track file.id) {
+              <nb-list-item>
+                <nb-user
+                  shape="rectangle"
+                  size="giant"
+                  [name]="file.name"
+                  [picture]="file.url"
+                  (click)="handleFileClick(file, dialog)"
+                />
+
+                <nb-actions size="small">
+                  <nb-action
+                    icon="trash-2-outline"
+                    (click)="handleRemoveWorksFile(file.name)"
+                  />
+                </nb-actions>
+              </nb-list-item>
+            }
+          </nb-list>
+        </nb-accordion-item-body>
+      </nb-accordion-item>
+    </nb-accordion>
+
+    <nb-accordion>
+      <nb-accordion-item>
+        <nb-accordion-item-header>
+          <span> Отзывы </span>
+
+          <nb-actions size="small">
+            <nb-action
+              icon="file-add-outline"
+              (click)="handleReviewsUploadFileClick($event)"
+            />
+          </nb-actions>
+        </nb-accordion-item-header>
+        <nb-accordion-item-body>
+          <nb-list>
+            @for (file of reviewsFiles(); track file.id) {
+              <nb-list-item>
+                <nb-user
+                  shape="rectangle"
+                  size="giant"
+                  [name]="file.name"
+                  [picture]="file.url"
+                  (click)="handleFileClick(file, dialog)"
+                />
+
+                <nb-actions size="small">
+                  <nb-action
+                    icon="trash-2-outline"
+                    (click)="handleRemoveReviewsFile(file.name)"
+                  />
+                </nb-actions>
+              </nb-list-item>
+            }
+          </nb-list>
+        </nb-accordion-item-body>
+      </nb-accordion-item>
+    </nb-accordion>
+  </nb-layout-column>
+</nb-layout>
+
+<ng-template
+  #dialog
+  let-data
+  let-ref="dialogRef"
+>
+  <nb-card>
+    <nb-card-body>
+      <img
+        alt="'lol"
+        width="400"
+        [src]="data"
+      />
+    </nb-card-body>
+  </nb-card>
+</ng-template>
+
+<input
+  #worksUploader
+  hidden
+  multiple
+  type="file"
+  (change)="handleFileInputChange($event, BucketFolderNamesEnum.Works)"
+/>
+
+<input
+  #reviewsUploader
+  hidden
+  multiple
+  type="file"
+  (change)="handleFileInputChange($event, BucketFolderNamesEnum.Reviews)"
+/>

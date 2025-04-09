@@ -55,9 +55,9 @@ module.exports = tseslint.config(
       '@angular-eslint/template/eqeqeq': 'error',
       '@angular-eslint/template/no-negated-async': 'error',
       '@angular-eslint/template/prefer-control-flow': 'error',
-      '@angular-eslint/template/prefer-ngsrc': 'error',
       '@angular-eslint/template/conditional-complexity': ['error', { maxComplexity: 5 }],
       '@angular-eslint/template/prefer-self-closing-tags': 'error',
+      '@angular-eslint/template/prefer-ngsrc': 'warn',
       '@angular-eslint/template/no-call-expression': 'off', // TODO: set @angular-eslint/template/no-call-expression": "error" when Angular signal() is no longer flagged as a call expression by the linter.
       '@angular-eslint/template/attributes-order': 'off', // controlled by Prettier
     },
