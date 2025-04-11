@@ -19,6 +19,7 @@
         "build": {
           "builder": "@ngx-env/builder:application",
           "options": {
+            "baseHref": "/potolki-admin/",
             "outputPath": "dist/potolki-sokol-admin",
             "index": "src/index.html",
             "browser": "src/main.ts",
@@ -43,7 +44,7 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumError": "10MB"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -100,6 +101,9 @@
           "options": {
             "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }

@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --configuration production --base-href=/potolki-admin/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "prepare": "husky",
@@ -41,6 +41,7 @@
     "@ngx-env/builder": "^19.0.4",
     "@schematics/angular": "19.1.6",
     "@types/jasmine": "5.1.0",
+    "angular-cli-ghpages": "2.0.3",
     "angular-eslint": "19.3.0",
     "eslint": "9.23.0",
     "eslint-plugin-import": "2.31.0",
