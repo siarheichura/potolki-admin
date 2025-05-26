@@ -1,0 +1,18 @@
+<nb-card>
+  <nb-card-body class="card__body">
+    <img
+      alt="img"
+      fill
+      [ngSrc]="img().url"
+    />
+  </nb-card-body>
+
+  <nb-card-footer class="card__footer">
+    <nb-actions>
+      <nb-action
+        icon="trash-2-outline"
+        (click)="delete.emit(img().name)"
+      />
+    </nb-actions>
+  </nb-card-footer>
+</nb-card>

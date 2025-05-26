@@ -1,0 +1,11 @@
+.card {
+  &__body {
+    min-height: 200px;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

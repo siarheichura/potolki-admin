@@ -1,0 +1,31 @@
+<nb-card>
+  <nb-card-header>Вставь ссылку на Youtube видео</nb-card-header>
+
+  <nb-card-body>
+    <input
+      fullWidth
+      nbInput
+      placeholder="Ссылка на видео"
+      [formControl]="videoLinkControl"
+      [status]="videoLinkControl.invalid && videoLinkControl.touched ? 'danger' : 'basic'"
+    />
+  </nb-card-body>
+
+  <nb-card-footer>
+    <button
+      nbButton
+      status="danger"
+    >
+      Отмена
+    </button>
+
+    <button
+      nbButton
+      status="success"
+      [disabled]="videoLinkControl.invalid"
+      (click)="handleSubmit()"
+    >
+      ОК
+    </button>
+  </nb-card-footer>
+</nb-card>

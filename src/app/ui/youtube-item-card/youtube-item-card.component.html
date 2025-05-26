@@ -1,0 +1,14 @@
+<nb-card>
+  <nb-card-body class="card__body">
+    <youtube-player [videoId]="id()" />
+  </nb-card-body>
+
+  <nb-card-footer class="card__footer">
+    <nb-actions>
+      <nb-action
+        icon="trash-2-outline"
+        (click)="delete.emit(id())"
+      />
+    </nb-actions>
+  </nb-card-footer>
+</nb-card>
