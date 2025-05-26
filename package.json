@@ -10,7 +10,8 @@
     "prepare": "husky",
     "lint": "ng lint; stylelint \"**/*.{css,scss}\"",
     "lint:fix": "ng lint --fix; stylelint --fix \"**/*.{css,scss}\"",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "supabase:db_sync": "npx supabase gen types typescript --project-id adpwyfareprpsduksvin > ./src/app/data-access/api/models/supabase.ts"
   },
   "private": true,
   "dependencies": {
@@ -23,6 +24,7 @@
     "@angular/platform-browser": "19.1.6",
     "@angular/platform-browser-dynamic": "19.1.6",
     "@angular/router": "19.1.6",
+    "@angular/youtube-player": "19.2.16",
     "@nebular/eva-icons": "15.0.0",
     "@nebular/theme": "15.0.0",
     "@ngrx/operators": "19.1.0",

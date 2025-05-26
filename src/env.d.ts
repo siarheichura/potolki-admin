@@ -4,6 +4,7 @@ declare interface Env {
   NG_APP_SUPABASE_URL: string;
   NG_APP_SUPABASE_KEY: string;
   NG_APP_SUPABSE_BUCKET_NAME: string;
+  NG_APP_SUPABSE_TABLE_NAME: string;
 }
 
 // Choose how to access the environment variables.

@@ -9,18 +9,21 @@ import {
   viewChild,
 } from '@angular/core';
 import {
-  NbAccordionModule,
   NbActionsModule,
   NbButtonModule,
   NbCardModule,
   NbDialogService,
   NbLayoutModule,
   NbListModule,
+  NbTabsetModule,
   NbUserModule,
 } from '@nebular/theme';
 import { BucketFolderNamesEnum } from './data-access/enums/bucket-folder-names';
 import { FileModel } from './data-access/models/file';
 import { AppStore } from './data-access/store';
+import { AddVideoDialogComponent } from './ui/add-video-dialog/add-video-dialog.component';
+import { ImgItemCardComponent } from './ui/img-item-card/img-item-card.component';
+import { YoutubeItemCardComponent } from './ui/youtube-item-card/youtube-item-card.component';
 
 @Component({
   selector: 'app-root',
@@ -29,12 +32,14 @@ import { AppStore } from './data-access/store';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     NbLayoutModule,
-    NbAccordionModule,
     NbListModule,
     NbUserModule,
     NbActionsModule,
     NbCardModule,
     NbButtonModule,
+    NbTabsetModule,
+    ImgItemCardComponent,
+    YoutubeItemCardComponent,
   ],
 })
 export class AppComponent implements OnInit {
@@ -44,6 +49,7 @@ export class AppComponent implements OnInit {
   #dialogService = inject(NbDialogService);
 
   worksFiles = computed(() => this.#store.worksFiles());
+  worksYoutubeVideos = computed(() => this.#store.youtubeVideos());
   reviewsFiles = computed(() => this.#store.reviewsFiles());
 
   worksUploader = viewChild<ElementRef<HTMLInputElement>>('worksUploader');
@@ -52,6 +58,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.#store.downloadWorksFiles();
     this.#store.downloadReviewsFiles();
+    this.#store.getWorksYoutubeVideo();
   }
 
   handleRemoveWorksFile(fileName: string) {
@@ -89,5 +96,21 @@ export class AppComponent implements OnInit {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   handleFileClick(file: FileModel, dialog: TemplateRef<any>) {
     this.#dialogService.open(dialog, { context: file.url });
+  }
+
+  handleWorksAddVideoClick(event: Event) {
+    event.stopPropagation();
+
+    this.#dialogService.open(AddVideoDialogComponent).onClose.subscribe((id: string) => {
+      this.handleWorksAddVideo(id);
+    });
+  }
+
+  handleWorksRemoveVideo(id: string) {
+    this.#store.removeWorksYoutubeVideo(id);
+  }
+
+  handleWorksAddVideo(id: string) {
+    this.#store.addWorksYoutubeVideo(id);
   }
 }

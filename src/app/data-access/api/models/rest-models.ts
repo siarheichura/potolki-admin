@@ -1,6 +1,12 @@
 import { FileObject, StorageError } from '@supabase/storage-js';
 import { BucketFolderNamesEnum } from '../../enums/bucket-folder-names';
 
+export interface YoutubeVideoRestModel {
+  id: number;
+  created_at: string;
+  youtubeId: string;
+}
+
 export interface RemoveFileParams {
   folder: BucketFolderNamesEnum;
   fileName: string;

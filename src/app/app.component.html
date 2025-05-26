@@ -1,100 +1,78 @@
 <nb-layout>
   <nb-layout-header>
-    <h4>Potolki Sokol Adminka</h4>
+    <h5 class="app__title">Potolki Sokol Admin Panel</h5>
   </nb-layout-header>
 
   <nb-layout-column>
-    <nb-accordion>
-      <nb-accordion-item>
-        <nb-accordion-item-header>
-          <span> Примеры работ </span>
+    <nb-card>
+      <nb-tabset fullWidth>
+        <nb-tab
+          class="app__tab"
+          tabTitle="🎨 Примеры работ"
+        >
+          <div class="app__tab-wrap">
+            <div class="app__tab-header">
+              <button
+                fullWidth
+                nbButton
+                size="tiny"
+                (click)="handleWorksAddVideoClick($event)"
+              >
+                Добавить видео 🎥
+              </button>
 
-          <nb-actions size="small">
-            <nb-action
-              icon="file-add-outline"
-              (click)="handleWorksUploadFileClick($event)"
-            />
-          </nb-actions>
-        </nb-accordion-item-header>
-        <nb-accordion-item-body>
-          <nb-list>
-            @for (file of worksFiles(); track file.id) {
-              <nb-list-item>
-                <nb-user
-                  shape="rectangle"
-                  size="giant"
-                  [name]="file.name"
-                  [picture]="file.url"
-                  (click)="handleFileClick(file, dialog)"
+              <button
+                fullWidth
+                nbButton
+                size="tiny"
+                (click)="handleWorksUploadFileClick($event)"
+              >
+                Добавить фото 📸
+              </button>
+            </div>
+
+            <div class="app__tab-body">
+              @for (video of worksYoutubeVideos(); track video.youtubeId) {
+                <psa-youtube-item-card [id]="video.youtubeId" />
+              }
+
+              @for (file of worksFiles(); track file.id) {
+                <psa-img-item-card
+                  [img]="file"
+                  (delete)="handleRemoveWorksFile($event)"
                 />
+              }
+            </div>
+          </div>
+        </nb-tab>
 
-                <nb-actions size="small">
-                  <nb-action
-                    icon="trash-2-outline"
-                    (click)="handleRemoveWorksFile(file.name)"
-                  />
-                </nb-actions>
-              </nb-list-item>
-            }
-          </nb-list>
-        </nb-accordion-item-body>
-      </nb-accordion-item>
-    </nb-accordion>
+        <nb-tab tabTitle="💬 Отзывы">
+          <div class="app__tab-wrap">
+            <div class="app__tab-header">
+              <button
+                fullWidth
+                nbButton
+                size="tiny"
+                (click)="handleReviewsUploadFileClick($event)"
+              >
+                Добавить фото 📸
+              </button>
+            </div>
 
-    <nb-accordion>
-      <nb-accordion-item>
-        <nb-accordion-item-header>
-          <span> Отзывы </span>
-
-          <nb-actions size="small">
-            <nb-action
-              icon="file-add-outline"
-              (click)="handleReviewsUploadFileClick($event)"
-            />
-          </nb-actions>
-        </nb-accordion-item-header>
-        <nb-accordion-item-body>
-          <nb-list>
-            @for (file of reviewsFiles(); track file.id) {
-              <nb-list-item>
-                <nb-user
-                  shape="rectangle"
-                  size="giant"
-                  [name]="file.name"
-                  [picture]="file.url"
-                  (click)="handleFileClick(file, dialog)"
+            <div class="app__tab-body">
+              @for (file of reviewsFiles(); track file.id) {
+                <psa-img-item-card
+                  [img]="file"
+                  (delete)="handleRemoveWorksFile($event)"
                 />
-
-                <nb-actions size="small">
-                  <nb-action
-                    icon="trash-2-outline"
-                    (click)="handleRemoveReviewsFile(file.name)"
-                  />
-                </nb-actions>
-              </nb-list-item>
-            }
-          </nb-list>
-        </nb-accordion-item-body>
-      </nb-accordion-item>
-    </nb-accordion>
+              }
+            </div>
+          </div>
+        </nb-tab>
+      </nb-tabset>
+    </nb-card>
   </nb-layout-column>
 </nb-layout>
-
-<ng-template
-  #dialog
-  let-data
-  let-ref="dialogRef"
->
-  <nb-card>
-    <nb-card-body>
-      <img
-        alt="'lol"
-        width="400"
-        [src]="data"
-      />
-    </nb-card-body>
-  </nb-card>
-</ng-template>
 
 <input
   #worksUploader

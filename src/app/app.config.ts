@@ -27,4 +27,5 @@ export const environment = {
   supabaseUrl: import.meta.env.NG_APP_SUPABASE_URL,
   supabaseKey: import.meta.env.NG_APP_SUPABASE_KEY,
   subabaseBucketName: import.meta.env.NG_APP_SUPABSE_BUCKET_NAME,
+  subabaseTableName: import.meta.env.NG_APP_SUPABSE_TABLE_NAME,
 };
