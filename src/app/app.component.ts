@@ -5,7 +5,6 @@ import {
   ElementRef,
   inject,
   OnInit,
-  TemplateRef,
   viewChild,
 } from '@angular/core';
 import {
@@ -19,7 +18,6 @@ import {
   NbUserModule,
 } from '@nebular/theme';
 import { BucketFolderNamesEnum } from './data-access/enums/bucket-folder-names';
-import { FileModel } from './data-access/models/file';
 import { AppStore } from './data-access/store';
 import { AddVideoDialogComponent } from './ui/add-video-dialog/add-video-dialog.component';
 import { ImgItemCardComponent } from './ui/img-item-card/img-item-card.component';
@@ -91,11 +89,6 @@ export class AppComponent implements OnInit {
         this.#store.uploadReviewsFile({ file, fileName: Date.now().toString() }),
       );
     }
-  }
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  handleFileClick(file: FileModel, dialog: TemplateRef<any>) {
-    this.#dialogService.open(dialog, { context: file.url });
   }
 
   handleWorksAddVideoClick(event: Event) {

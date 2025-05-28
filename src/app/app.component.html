@@ -15,7 +15,7 @@
               <button
                 fullWidth
                 nbButton
-                size="tiny"
+                status="primary"
                 (click)="handleWorksAddVideoClick($event)"
               >
                 Добавить видео 🎥
@@ -24,7 +24,7 @@
               <button
                 fullWidth
                 nbButton
-                size="tiny"
+                status="primary"
                 (click)="handleWorksUploadFileClick($event)"
               >
                 Добавить фото 📸
@@ -33,7 +33,10 @@
 
             <div class="app__tab-body">
               @for (video of worksYoutubeVideos(); track video.youtubeId) {
-                <psa-youtube-item-card [id]="video.youtubeId" />
+                <psa-youtube-item-card
+                  [id]="video.youtubeId"
+                  (delete)="handleWorksRemoveVideo($event)"
+                />
               }
 
               @for (file of worksFiles(); track file.id) {
@@ -52,7 +55,7 @@
               <button
                 fullWidth
                 nbButton
-                size="tiny"
+                status="primary"
                 (click)="handleReviewsUploadFileClick($event)"
               >
                 Добавить фото 📸
@@ -63,7 +66,7 @@
               @for (file of reviewsFiles(); track file.id) {
                 <psa-img-item-card
                   [img]="file"
-                  (delete)="handleRemoveWorksFile($event)"
+                  (delete)="handleRemoveReviewsFile($event)"
                 />
               }
             </div>

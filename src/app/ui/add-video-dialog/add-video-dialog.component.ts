@@ -20,6 +20,17 @@ export class AddVideoDialogComponent {
   handleSubmit() {
     if (this.videoLinkControl.invalid) return;
 
-    this.#dialogRef.close(this.videoLinkControl.value);
+    const videoId = this.getVideoId(this.videoLinkControl.value);
+
+    this.#dialogRef.close(videoId);
+  }
+
+  getVideoId(url: string): string | null {
+    const regex =
+      /(?:youtube\.com\/(?:watch\?v=|embed\/|v\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+
+    const match = url.match(regex);
+
+    return match ? match[1] : null;
   }
 }
