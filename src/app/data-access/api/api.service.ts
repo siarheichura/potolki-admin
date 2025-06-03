@@ -12,14 +12,12 @@ import {
 } from './models/rest-models';
 import { Database } from './models/supabase';
 
+// eslint-disable-next-line no-console
+console.log('______ENVIRONMENT______', environment);
+
 @Injectable({ providedIn: 'root' })
 export class ApiService {
   #supabase = createClient<Database>(environment.supabaseUrl, environment.supabaseKey);
-
-  constructor() {
-    // eslint-disable-next-line no-console
-    console.log('______ENVIRONMENT______', environment);
-  }
 
   /*** Youtube videos ***/
 
