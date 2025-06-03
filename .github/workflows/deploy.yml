@@ -22,7 +22,7 @@ jobs:
         run: npm ci
 
       - name: 🛠️ Build project
-        run: npm run build -- --base-href=/potolki-admin/
+        run: npm run build
 
       - name: 🚀 Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
