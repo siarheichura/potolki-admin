@@ -16,6 +16,11 @@ import { Database } from './models/supabase';
 export class ApiService {
   #supabase = createClient<Database>(environment.supabaseUrl, environment.supabaseKey);
 
+  constructor() {
+    // eslint-disable-next-line no-console
+    console.log('______ENVIRONMENT______', environment);
+  }
+
   /*** Youtube videos ***/
 
   getYoutubeVideos(): Observable<YoutubeVideoRestModel[]> {
