@@ -10,18 +10,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: 🔄 Checkout
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: 📦 Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 18
 
-      - run: npm ci
+      - name: 📥 Install dependencies
+        run: npm ci
 
-      - run: npm run build -- --base-href=/potolki-admin/
+      - name: 🛠️ Build project
+        run: npm run build -- --base-href=/potolki-admin/
 
-      - name: Deploy to GitHub Pages
+      - name: 🚀 Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: dist/potolki-sokol-admin
+          folder: dist/potolki-admin
