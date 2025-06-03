@@ -23,6 +23,11 @@ jobs:
 
       - name: 🛠️ Build project
         run: npm run build
+        env:
+          NG_APP_SUPABASE_URL: ${{ secrets.NG_APP_SUPABASE_URL }}
+          NG_APP_SUPABASE_KEY: ${{ secrets.NG_APP_SUPABASE_KEY }}
+          NG_APP_SUPABSE_BUCKET_NAME: ${{ secrets.NG_APP_SUPABSE_BUCKET_NAME }}
+          NG_APP_SUPABSE_TABLE_NAME: ${{ secrets.NG_APP_SUPABSE_TABLE_NAME }}
 
       - name: 🚀 Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
