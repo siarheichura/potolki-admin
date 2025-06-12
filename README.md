@@ -1,1 +1,1 @@
-### Potolki sokol admin
+https://siarheichura.github.io/potolki-admin/
